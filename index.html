@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>NYC Pizzas!</title>
+  <meta name="description" content="NYC Pizzas!">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+  <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+
+<body>
+    <section name="intro" class="ph6 pt4 center">
+        <h1 class="f1 lh-title code tc">NYC Pizzas!</h1> 
+        <p class="f3 lh-copy measure code">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id tempora, labore ea nemo sequi vel maiores fuga quos molestiae pariatur aspernatur ullam non ipsa commodi, ipsam officia facilis soluta. Illum!</p>
+        <p class="f3 lh-copy measure code">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id tempora, labore ea nemo sequi vel maiores fuga quos molestiae pariatur aspernatur ullam non ipsa commodi, ipsam officia facilis soluta. Illum!</p>
+    </section>
+    <section name="mapSection" class="relative flex flex-column">
+      <div name="map" id="map" class="absolute top-0 bottom-0 w-100 vh-100">
+      </div>
+      <div name="buttonsContainer" class="absolute top-2 left-0 z-9999 w-100">
+        <div name="buttons" class="code f4 flex justify-center">
+          <button class="bg-white ba b--red br3 mh1 ph2 pv2">All places</button>
+          <button class="bg-white ba b--red br3 mh1 ph2 pv2">EaterNY</button>
+          <button class="bg-white ba b--red br3 mh1 ph2 pv2">NY Times</button>
+          <button class="bg-white ba b--red br3 mh1 ph2 pv2">Time Out</button>
+          <button class="bg-white ba b--red br3 mh1 ph2 pv2">Yotam</button>
+          <button class="bg-white ba b--red br3 mh1 ph2 pv2">Thrillist</button>
+          <button class="bg-white ba b--red br3 mh1 ph2 pv2">Only The Best</button>
+        </div>
+      </div>
+      
+      
+    </section>
+    
+  <script src="js/map.js"></script>
+</body>
+</html>
