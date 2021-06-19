@@ -1,6 +1,7 @@
 mapboxgl.accessToken = "pk.eyJ1IjoienNjaG5laWRlciIsImEiOiJjaXg3eWUzeGowMXEyMnlxeWI1MzBudzN0In0.i-aef9w2ifwlPvXerrQOwA";
 
 const mapContainer = document.querySelector('#map')
+const buttons = document.querySelectorAll('button.filter')
 
 // Create and initialize map variable
 var map = new mapboxgl.Map({
@@ -54,6 +55,8 @@ map.on('load', function() {
       },
       firstSymbolId
     );
+
+    buttons.forEach( button => button.addEventListener('click', filter))
 });
 
 let audio
@@ -63,6 +66,17 @@ function stopAudio() {
     audio.pause()
     audio = null
   }
+}
+
+function filter(e) {
+  const name = e.target.dataset.filter
+  buttons.forEach(button => button.classList.remove('active'))
+  e.target.classList.add('active')
+  map.setFilter('pizzaPlaces', name === 'all' ? null : [
+    '==', 
+    ['get', name], 
+    '1'
+  ])
 }
 
 // Create popups

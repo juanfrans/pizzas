@@ -12,6 +12,11 @@
   max-width: 16rem;
 }
 
+button.filter.active {
+  background-color: #ffeb3b;
+  font-weight: bold;
+}
+
 @media screen and (min-width: 30em) {
   .intro-wrapper.pt6 {
     padding-top: 11rem;
