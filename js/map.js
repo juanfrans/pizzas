@@ -1,8 +1,10 @@
 mapboxgl.accessToken = "pk.eyJ1IjoienNjaG5laWRlciIsImEiOiJjaXg3eWUzeGowMXEyMnlxeWI1MzBudzN0In0.i-aef9w2ifwlPvXerrQOwA";
 
+const mapContainer = document.querySelector('#map')
+
 // Create and initialize map variable
 var map = new mapboxgl.Map({
-  container: "map",
+  container: mapContainer,
   style: "mapbox://styles/zschneider/ckpohayy112xe17qlj1asuw3i",
   center: [-73.99, 40.715],
   zoom: 11.25,
@@ -54,8 +56,13 @@ map.on('load', function() {
     );
 });
 
-function getPopupHTML(props) {
+let audio
 
+function stopAudio() {
+  if (audio) {
+    audio.pause()
+    audio = null
+  }
 }
 
 // Create popups
@@ -111,6 +118,14 @@ map.on("click", "pizzaPlaces", function (e) {
     .setLngLat(e.lngLat)
     .setHTML(popuphtml)
     .addTo(map);
+  
+  stopAudio()
+
+  if(props.scan === '1') {
+    audio = new Audio(`${props['3dModel']}/audio.m4a`);
+    audio.loop = true
+    audio.play();
+  } 
 });
 
 map.on("mouseenter", "pizzaPlaces", function () {
@@ -120,3 +135,9 @@ map.on("mouseenter", "pizzaPlaces", function () {
 map.on("mouseleave", "pizzaPlaces", function () {
   map.getCanvas().style.cursor = "";
 });
+
+mapContainer.addEventListener('click', e => {
+  if (e.target.classList.contains('mapboxgl-popup-close-button')) {
+    stopAudio()
+  }
+})
