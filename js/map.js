@@ -1,7 +1,10 @@
 mapboxgl.accessToken = "pk.eyJ1IjoienNjaG5laWRlciIsImEiOiJjaXg3eWUzeGowMXEyMnlxeWI1MzBudzN0In0.i-aef9w2ifwlPvXerrQOwA";
 
+const mainContainer = document.querySelector('.main')
 const mapContainer = document.querySelector('#map')
 const buttons = document.querySelectorAll('button.filter')
+const observer = new IntersectionObserver(enableZoom)
+observer.observe(mainContainer)
 const inListFilter = [
     'any', 
     ['==', ['get', 'eaterNY'], '1' ],
@@ -19,6 +22,7 @@ const map = new mapboxgl.Map({
   style: "mapbox://styles/zschneider/ckpohayy112xe17qlj1asuw3i",
   center: [-73.99, 40.715],
   zoom: 11.25,
+  scrollZoom: false,
 });
 
 // Load other layers
@@ -142,6 +146,14 @@ mapContainer.addEventListener('click', e => {
   }
 })
 
+function enableZoom(entries) {
+  console.log(entries[0].isIntersecting)
+  if( !entries[0].isIntersecting && !map.scrollZoom.isEnabled() ) {
+    map.scrollZoom.enable({ around: 'center' })
+  } else if (entries[0].isIntersecting && map.scrollZoom.isEnabled()){
+    map.scrollZoom.disable()
+  }
+}
 
 function stopAudio() {
   if (audio) {

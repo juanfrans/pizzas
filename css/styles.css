@@ -3,8 +3,9 @@
   font-family: "roboto", sans-serif;
 }
 
-section {
+.main  {
   background-color: white;
+  width: 100vw;
 }
 
 .static-map {
@@ -13,7 +14,7 @@ section {
   background-position: center;
   width: 100vw;
   height: 100vh;
-  margin-bottom: 100vh;
+  margin-bottom: 120vh;
 }
 
 .map-wrapper {
