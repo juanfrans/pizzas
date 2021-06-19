@@ -31,7 +31,13 @@ map.on('load', function() {
           visibility: "visible",
         },
         paint: {
-          "circle-color": "black",
+          "circle-color": [
+            'match',
+            ['get', 'scan'],
+            '1',
+            'red',
+            'black'
+          ],
           "circle-opacity": 1,
           "circle-radius": [
             "interpolate",
@@ -40,7 +46,7 @@ map.on('load', function() {
             10,
             4,
             16,
-            8,
+            30,
           ],
         },
       },
@@ -48,21 +54,69 @@ map.on('load', function() {
     );
 });
 
+function getPopupHTML(props) {
+
+}
+
 // Create popups
 map.on("click", "pizzaPlaces", function (e) {
   e.originalEvent.preventDefault();
-  console.log("Clicked on a pizza place...");
+  console.log("Clicked on a pizza place...", e.features[0].properties);
+  const props = e.features[0].properties
   let popuphtml =
-    "<div class='mt2 mb2 dark-gray'><h4 class='ttu mb0'>Pizza Place X</h4>" +
-    "<p class='mt2'>Placeholder text for address, url, telephone, and 3d model.</p>";
-  popup = new mapboxgl.Popup()
+  `
+    <div class=''>
+      <h3 class='f4 mt0 mb0'>${props.name}</h3>
+      <p class='f5 mt0 lh-copy'>${props.address}, ${props.borough}</p>
+      ${
+        (() => {
+          if(props.scan === '1') {
+            return `
+            <div>
+              <p class='f5 mt0 mb0 lh-copy'>
+                <span class='b'>price:</span> $${props.price}
+              </p>
+              <p class='f5 mt0 mb0 lh-copy'>
+                <span class='b'>date and time:</span> ${props.datetime}
+              </p>
+              <p class='f5 mt0 mb0 lh-copy'>
+                <span class='b'>serving temperature:</span> ${props.temperatureC}C
+              </p>
+              <p class='f5 mt0 mb0 lh-copy'>
+                <span class='b'>notes:</span> ${props.notes}
+              </p>
+            </div>
+            <model-viewer 
+              src="${props['3dModel']}/model.gltf"
+              alt="A pizza slice"
+              ar
+              ar-modes="webxr scene-viewer quick-look"
+              field-of-view="10deg"
+              camera-orbit="0deg 10deg 105%"
+              max-camera-orbit="Infinity 60deg auto"
+              min-camera-orbit="-Infinity -60deg 40%"
+              camera-controls
+              auto-rotate
+            >
+            </model-viewer>
+            `
+          } else {
+            return ''
+          }
+        })()
+      }
+    </div>
+  `
+  const popup = new mapboxgl.Popup({ maxWidth: '350px'})
     .setLngLat(e.lngLat)
     .setHTML(popuphtml)
     .addTo(map);
 });
+
 map.on("mouseenter", "pizzaPlaces", function () {
   map.getCanvas().style.cursor = "pointer";
 });
+
 map.on("mouseleave", "pizzaPlaces", function () {
   map.getCanvas().style.cursor = "";
 });

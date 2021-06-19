@@ -3,34 +3,71 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
   <title>NYC Pizzas!</title>
   <meta name="description" content="NYC Pizzas!">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js'></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
   <link rel="stylesheet" href="css/styles.css" />
 
 </head>
 
-<body>
-    <section name="intro" class="ph6 pv4 center">
-        <h1 class="f1 f2-ns lh-title code tc">NYC Pizzas!</h1> 
-        <p class="f3 f5-ns lh-copy measure measure-wide-ns center code">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id tempora, labore ea nemo sequi vel maiores fuga quos molestiae pariatur aspernatur ullam non ipsa commodi, ipsam officia facilis soluta. Illum!</p>
-        <p class="f3 f5-ns lh-copy measure measure-wide-ns center code">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id tempora, labore ea nemo sequi vel maiores fuga quos molestiae pariatur aspernatur ullam non ipsa commodi, ipsam officia facilis soluta. Illum!</p>
+<body class='sans-serif'>
+  <section name="intro" class="mw6 center relative">
+      <img src='assets/pizza1.png' class="absolute top-0 w-75 right-0"/>
+      <div class='intro-wrapper ph4 pb4 pt6 center'>
+        <h1 class="heading f2 lh-title tl i">The quest for the ultimate pizza slice in NYC</h1> 
+        <p class="f5 f5-ns lh-copy center">
+          There is no denying that New York City has had a long standing connection to the Pizza slice as one of its hallmark
+          culinary offerings and culture symbols.
+        </p>
+        <p class="f5 f5-ns lh-copy center">
+          The pizza slice even has an economic tie to the city, suggested by the Pizza Principle - a correlation between the price
+          of a slice and that of a subway ride.
+        </p>
+        <p class="f5 f5-ns lh-copy center">
+          What is it that makes “the best’ slices? One researcher set out to find the reason for highly rated pizzas, looking at
+          location, price and the type of fuel used for the oven. This research found that Midtown pizzas are slightly less
+          favorable and that coal fired ovens draw larger crowds, but also concluded that they were able to discover much
+          differentiation in quality. They suggested that “as is the case with wine, people in general do not have a sophisticated
+          enough palate to fully appreciate the many facets of pizza.”
+        </p>
+        <p class="f5 f5-ns lh-copy center">
+          Pizza is a food loved by many, and lists rating the best slices in town are often compiled . We decided to create our
+          own aggregate list, combining 4 different articles published on thrillist, Eater, Time Out, NYT, and a personal list
+          made by a friend and independent Pizza lover Yotam Hadar. We went out to capture the best pizzas in the city using
+          photogrammetry, so that you can enjoy a vivid documentation of these slices with AR.
+        </p>
+      </div>
+      <img src='assets/pizza2.png' />
+      <img src='assets/pizza3.png' />
+      <div class='ph4 pv4 center'>
+        <p class="f5 f5-ns lh-copy center">
+          There are x businesses within the five boroughs that offer pizza in the city, according to the foursquare API. Out of
+          these thousands, there are several famous spots who come up in all the lists rating the best pizzas in the city. 60
+          restaurants appear in the lists we looked at for the best pizzas, and from that group only 23 restaurants appear in more
+          than one list.
+        </p>
+        <p class="f5 f5-ns lh-copy center">
+          For this article, we looked at lists by The New York Times, TimeOut, Eater, Thrillist, and an independant list created
+          by our friend and pizza enthusiast Yotam Hadar.
+        </p>
+      </div>
     </section>
     <section name="mapSection" class="relative flex flex-column">
-      <div name="map" id="map" class="absolute top-0 bottom-0 w-100 vh-100">
+      <div name="map" id="map" class="absolute top-0 bottom-0 w-100 vh-100" data-tap-disabled="true" >
       </div>
-      <div name="buttonsContainer" class="absolute top-2 left-0 z-9999 w-100">
-        <div name="buttons" class="code f4 f6-ns flex justify-center">
-          <button class="bg-white ba b--red br3 mh1 mh2-ns ph2 pv2">All places</button>
-          <button class="bg-white ba b--red br3 mh1 mh2-ns ph2 pv2">EaterNY</button>
-          <button class="bg-white ba b--red br3 mh1 mh2-ns ph2 pv2">NY Times</button>
-          <button class="bg-white ba b--red br3 mh1 mh2-ns ph2 pv2">Time Out</button>
-          <button class="bg-white ba b--red br3 mh1 mh2-ns ph2 pv2">Yotam</button>
-          <button class="bg-white ba b--red br3 mh1 mh2-ns ph2 pv2">Thrillist</button>
-          <button class="bg-white ba b--red br3 mh1 mh2-ns ph2 pv2">Only The Best</button>
+      <div name="buttonsContainer" class="absolute top-1 left-1 top-0-ns left-0-ns w-99 w-100-ns z-9999">
+        <div name="buttons" class="f7 f6-ns flex items-start justify-center flex-column flex-row-ns">
+          <button class="bg-white ba b--red br3 mv1 mh2-ns tl tc-ns mw8 ph2 pv2">All places</button>
+          <button class="bg-white ba b--red br3 mv1 mh2-ns tl tc-ns mw8 ph2 pv2">EaterNY</button>
+          <button class="bg-white ba b--red br3 mv1 mh2-ns tl tc-ns mw8 ph2 pv2">NY Times</button>
+          <button class="bg-white ba b--red br3 mv1 mh2-ns tl tc-ns mw8 ph2 pv2">Time Out</button>
+          <button class="bg-white ba b--red br3 mv1 mh2-ns tl tc-ns mw8 ph2 pv2">Yotam</button>
+          <button class="bg-white ba b--red br3 mv1 mh2-ns tl tc-ns mw8 ph2 pv2">Thrillist</button>
+          <button class="bg-white ba b--red br3 mv1 mh2-ns tl tc-ns mw8 ph2 pv2">Only The Best</button>
         </div>
       </div>
       

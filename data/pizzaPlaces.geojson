@@ -1,18 +1,325 @@
 {
 "type": "FeatureCollection",
 "features": [
-{ "type": "Feature", "properties": { "name": "Best Pizza", "category": "Pizza Place", "phone": "(718) 599-2210", "address": "33 Havemeyer St", "city": "Brooklyn", "zipcode": 11211.0, "state": "NY", "latitude": 40.71568776, "longitude": -73.95354687, "url": "http://best.piz.za.com/", "Unnamed: 10": null, "borough": "Brooklyn", "eaterNY": null, "NYTimes": null, "timeOut": "1", "yotam": "1", "thrillist": "1", "scan": "1", "price": 3.15, "temperatureC": 65.3, "datetime": "6/5/2021", "3dModel": "https://drive.google.com/drive/folders/1I9sqwWtbVhE_heOrB89tHgF_Tl66-rOj?usp=sharingg", "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.95354687, 40.71568776 ] } },
-{ "type": "Feature", "properties": { "name": "Denino's Pizzeria Tavern", "category": "Pizza Place", "phone": "(718) 442-9401", "address": "524 Port Richmond Ave", "city": "Staten Island", "zipcode": 10302.0, "state": "NY", "latitude": 40.630199, "longitude": -74.140225, "url": "http://deninos.com", "Unnamed: 10": null, "borough": "Staten Island", "eaterNY": "1", "NYTimes": null, "timeOut": "1", "yotam": null, "thrillist": "1", "scan": "1", "price": 3.25, "temperatureC": 85.5, "datetime": "6/11/2021", "3dModel": "https://drive.google.com/drive/folders/1dtK9tjwX61ShUF1rHC717ozo2l2VChKr?usp=sharing", "notes": null }, "geometry": { "type": "Point", "coordinates": [ -74.140225, 40.630199 ] } },
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Best Pizza",
+    "category": "Pizza Place",
+    "phone": "(718) 599-2210",
+    "address": "33 Havemeyer St",
+    "city": "Brooklyn",
+    "zipcode": 11211.0,
+    "state": "NY",
+    "latitude": 40.71568776,
+    "longitude": -73.95354687,
+    "url": "http://best.piz.za.com/",
+    "Unnamed: 10": null,
+    "borough": "Brooklyn",
+    "eaterNY": null,
+    "NYTimes": null,
+    "timeOut": "1",
+    "yotam": "1",
+    "thrillist": "1",
+    "scan": "1",
+    "price": 3.15,
+    "temperatureC": 65.3,
+    "datetime": "6/5/2021",
+    "3dModel": "./assets/best_pizza/",
+    "notes": null
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -73.95354687,
+      40.71568776
+    ]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Denino's Pizzeria Tavern",
+    "category": "Pizza Place",
+    "phone": "(718) 442-9401",
+    "address": "524 Port Richmond Ave",
+    "city": "Staten Island",
+    "zipcode": 10302.0,
+    "state": "NY",
+    "latitude": 40.630199,
+    "longitude": -74.140225,
+    "url": "http://deninos.com",
+    "Unnamed: 10": null,
+    "borough": "Staten Island",
+    "eaterNY": "1",
+    "NYTimes": null,
+    "timeOut": "1",
+    "yotam": null,
+    "thrillist": "1",
+    "scan": "1",
+    "price": 3.25,
+    "temperatureC": 85.5,
+    "datetime": "6/11/2021",
+    "3dModel": "./assets/denino/",
+    "notes": null
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -74.140225,
+      40.630199
+    ]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Joe & Pat Pizzeria and Restaurant",
+    "category": "Pizza Place",
+    "phone": "(718) 981-0887",
+    "address": "1758 Victory Blvd",
+    "city": "Staten Island",
+    "zipcode": 10314.0,
+    "state": "NY",
+    "latitude": 40.61304648,
+    "longitude": -74.12212777000001,
+    "url": "http://www.joeandpatspizzany.com",
+    "Unnamed: 10": null,
+    "borough": "Staten Island",
+    "eaterNY": "1",
+    "NYTimes": null,
+    "timeOut": "1",
+    "yotam": null,
+    "thrillist": "1",
+    "scan": "1",
+    "price": 2.5,
+    "temperatureC": 55.4,
+    "datetime": "6/11/2021",
+    "3dModel": "./assets/joe_and_pat/",
+    "notes": null
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -74.12212777,
+      40.61304648
+    ]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Joe's Pizza",
+    "category": "Pizza Place",
+    "phone": "(212) 366-1182",
+    "address": "7 Carmine St",
+    "city": "New York",
+    "zipcode": 10014.0,
+    "state": "NY",
+    "latitude": 40.73046112,
+    "longitude": -74.00197226,
+    "url": "http://www.joespizzanyc.com",
+    "Unnamed: 10": null,
+    "borough": "Manhattan",
+    "eaterNY": "1",
+    "NYTimes": "1",
+    "timeOut": "1",
+    "yotam": null,
+    "thrillist": "1",
+    "scan": "1",
+    "price": 3.25,
+    "temperatureC": 62.1,
+    "datetime": "6/11/2021",
+    "3dModel": "./assets/joes/",
+    "notes": null
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -74.00197226,
+      40.73046112
+    ]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Louie & Ernie's Pizza",
+    "category": "Pizza Place",
+    "phone": "(718) 829-6230",
+    "address": "1300 Crosby Ave",
+    "city": "Bronx",
+    "zipcode": 10461.0,
+    "state": "NY",
+    "latitude": 40.83831034,
+    "longitude": -73.8287855,
+    "url": null,
+    "Unnamed: 10": null,
+    "borough": "Bronx",
+    "eaterNY": "1",
+    "NYTimes": null,
+    "timeOut": "1",
+    "yotam": null,
+    "thrillist": "1",
+    "scan": "1",
+    "price": 3.5,
+    "temperatureC": 63.8,
+    "datetime": "5/28/2021",
+    "3dModel": "./assets/louie_ernie/",
+    "notes": null
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -73.8287855,
+      40.83831034
+    ]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Paulie Gee's Slice Shop",
+    "category": "Pizza Place",
+    "phone": null,
+    "address": "110 Franklin St",
+    "city": "Brooklyn",
+    "zipcode": 11222.0,
+    "state": "NY",
+    "latitude": 40.72868942,
+    "longitude": -73.95708917,
+    "url": "https://pauliegee.com/slice-shop/",
+    "Unnamed: 10": null,
+    "borough": "Brooklyn",
+    "eaterNY": "1",
+    "NYTimes": "1",
+    "timeOut": "1",
+    "yotam": "1",
+    "thrillist": null,
+    "scan": "1",
+    "price": 3.75,
+    "temperatureC": 58.8,
+    "datetime": "6/5/2021",
+    "3dModel": "./assets/paulie_gees",
+    "notes": null
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -73.95708917,
+      40.72868942
+    ]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Prince Street Pizza",
+    "category": "Pizza Place",
+    "phone": "(212) 966-4100",
+    "address": "27 Prince St",
+    "city": "New York",
+    "zipcode": 10012.0,
+    "state": "NY",
+    "latitude": 40.72309326,
+    "longitude": -73.99452729,
+    "url": "https://princestreetpizzanyc.com",
+    "Unnamed: 10": null,
+    "borough": "Manhattan",
+    "eaterNY": "1",
+    "NYTimes": null,
+    "timeOut": "1",
+    "yotam": null,
+    "thrillist": null,
+    "scan": "1",
+    "price": 3.5,
+    "temperatureC": null,
+    "datetime": null,
+    "3dModel": "./assets/prince/",
+    "notes": null
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -73.99452729,
+      40.72309326
+    ]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Rizzo's Fine Pizza",
+    "category": "Pizza Place",
+    "phone": "(718) 721-9862",
+    "address": "3013 Steinway St",
+    "city": "Astoria",
+    "zipcode": 11103.0,
+    "state": "NY",
+    "latitude": 40.76345678,
+    "longitude": -73.91527129000001,
+    "url": "http://www.rizzosfinepizza.com",
+    "Unnamed: 10": null,
+    "borough": "Queens",
+    "eaterNY": "1",
+    "NYTimes": null,
+    "timeOut": "1",
+    "yotam": null,
+    "thrillist": "1",
+    "scan": "1",
+    "price": 2.0,
+    "temperatureC": 82.8,
+    "datetime": null,
+    "3dModel": "./assets/rizzos/",
+    "notes": null
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -73.91527129,
+      40.76345678
+    ]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Scarr's Pizza",
+    "category": "Pizza Place",
+    "phone": "(212) 334-3481",
+    "address": "22 Orchard St",
+    "city": "New York",
+    "zipcode": 10002.0,
+    "state": "NY",
+    "latitude": 40.71533501,
+    "longitude": -73.991649,
+    "url": "http://www.scarrspizza.com",
+    "Unnamed: 10": null,
+    "borough": "Manhattan",
+    "eaterNY": null,
+    "NYTimes": "1",
+    "timeOut": "1",
+    "yotam": "1",
+    "thrillist": "1",
+    "scan": "1",
+    "price": 3.8,
+    "temperatureC": 56.5,
+    "datetime": "6/11/2021",
+    "3dModel": "./assets/scarrs/",
+    "notes": null
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -73.991649,
+      40.71533501
+    ]
+  }
+},
+
 { "type": "Feature", "properties": { "name": "Di Fara Pizza", "category": "Pizza Place", "phone": "(718) 258-1367", "address": "1424 Avenue J", "city": "Brooklyn", "zipcode": 11230.0, "state": "NY", "latitude": 40.62513471, "longitude": -73.96147854, "url": "http://www.difara.com", "Unnamed: 10": null, "borough": "Brooklyn", "eaterNY": "1", "NYTimes": null, "timeOut": "1", "yotam": "1", "thrillist": "1", "scan": "1", "price": null, "temperatureC": null, "datetime": null, "3dModel": null, "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.96147854, 40.62513471 ] } },
-{ "type": "Feature", "properties": { "name": "Joe & Pat Pizzeria and Restaurant", "category": "Pizza Place", "phone": "(718) 981-0887", "address": "1758 Victory Blvd", "city": "Staten Island", "zipcode": 10314.0, "state": "NY", "latitude": 40.61304648, "longitude": -74.12212777000001, "url": "http://www.joeandpatspizzany.com", "Unnamed: 10": null, "borough": "Staten Island", "eaterNY": "1", "NYTimes": null, "timeOut": "1", "yotam": null, "thrillist": "1", "scan": "1", "price": 2.5, "temperatureC": 55.4, "datetime": "6/11/2021", "3dModel": "https://drive.google.com/drive/folders/15HyEeRgZG84whAXixsRaYaP-kQgDxQ2E?usp=sharing", "notes": null }, "geometry": { "type": "Point", "coordinates": [ -74.12212777, 40.61304648 ] } },
-{ "type": "Feature", "properties": { "name": "Joe's Pizza", "category": "Pizza Place", "phone": "(212) 366-1182", "address": "7 Carmine St", "city": "New York", "zipcode": 10014.0, "state": "NY", "latitude": 40.73046112, "longitude": -74.00197226, "url": "http://www.joespizzanyc.com", "Unnamed: 10": null, "borough": "Manhattan", "eaterNY": "1", "NYTimes": "1", "timeOut": "1", "yotam": null, "thrillist": "1", "scan": "1", "price": 3.25, "temperatureC": 62.1, "datetime": "6/11/2021", "3dModel": "https://drive.google.com/drive/folders/1KYO5S_m935yh8mZJrD98p1ZeLhXFf5_I?usp=sharing", "notes": null }, "geometry": { "type": "Point", "coordinates": [ -74.00197226, 40.73046112 ] } },
 { "type": "Feature", "properties": { "name": "L&B Spumoni Gardens", "category": "Pizza Place", "phone": "(718) 372-8400", "address": "2725 86th St", "city": "Brooklyn", "zipcode": 11223.0, "state": "NY", "latitude": 40.59457746, "longitude": -73.98145848, "url": "http://www.spumonigardens.com", "Unnamed: 10": null, "borough": "Brooklyn", "eaterNY": "1", "NYTimes": "1", "timeOut": "1", "yotam": null, "thrillist": "1", "scan": "1", "price": null, "temperatureC": null, "datetime": null, "3dModel": null, "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.98145848, 40.59457746 ] } },
-{ "type": "Feature", "properties": { "name": "Louie & Ernie's Pizza", "category": "Pizza Place", "phone": "(718) 829-6230", "address": "1300 Crosby Ave", "city": "Bronx", "zipcode": 10461.0, "state": "NY", "latitude": 40.83831034, "longitude": -73.8287855, "url": null, "Unnamed: 10": null, "borough": "Bronx", "eaterNY": "1", "NYTimes": null, "timeOut": "1", "yotam": null, "thrillist": "1", "scan": "1", "price": 3.5, "temperatureC": 63.8, "datetime": "5/28/2021", "3dModel": "https://drive.google.com/drive/folders/1T0noDJuRsnNGww4brC9CctI4_BrP1EBA?usp=sharing", "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.8287855, 40.83831034 ] } },
-{ "type": "Feature", "properties": { "name": "Paulie Gee's Slice Shop", "category": "Pizza Place", "phone": null, "address": "110 Franklin St", "city": "Brooklyn", "zipcode": 11222.0, "state": "NY", "latitude": 40.72868942, "longitude": -73.95708917, "url": "https://pauliegee.com/slice-shop/", "Unnamed: 10": null, "borough": "Brooklyn", "eaterNY": "1", "NYTimes": "1", "timeOut": "1", "yotam": "1", "thrillist": null, "scan": "1", "price": 3.75, "temperatureC": 58.8, "datetime": "6/5/2021", "3dModel": "https://drive.google.com/drive/folders/1YlplQg89qoi_4vJsyt6j_Cxk3vzDyOw0?usp=sharing", "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.95708917, 40.72868942 ] } },
-{ "type": "Feature", "properties": { "name": "Prince Street Pizza", "category": "Pizza Place", "phone": "(212) 966-4100", "address": "27 Prince St", "city": "New York", "zipcode": 10012.0, "state": "NY", "latitude": 40.72309326, "longitude": -73.99452729, "url": "https://princestreetpizzanyc.com", "Unnamed: 10": null, "borough": "Manhattan", "eaterNY": "1", "NYTimes": null, "timeOut": "1", "yotam": null, "thrillist": null, "scan": "1", "price": 3.5, "temperatureC": null, "datetime": null, "3dModel": "https://drive.google.com/drive/folders/1Zapne1E0ZVmm9oj_uIS0UDX4G8AZTvjd?usp=sharing", "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.99452729, 40.72309326 ] } },
-{ "type": "Feature", "properties": { "name": "Rizzo's Fine Pizza", "category": "Pizza Place", "phone": "(718) 721-9862", "address": "3013 Steinway St", "city": "Astoria", "zipcode": 11103.0, "state": "NY", "latitude": 40.76345678, "longitude": -73.91527129000001, "url": "http://www.rizzosfinepizza.com", "Unnamed: 10": null, "borough": "Queens", "eaterNY": "1", "NYTimes": null, "timeOut": "1", "yotam": null, "thrillist": "1", "scan": "1", "price": 2.0, "temperatureC": 82.8, "datetime": null, "3dModel": "https://drive.google.com/drive/folders/1rRtgXciuWEGb3bu7H1c-9BpA01Q8CNvg?usp=sharing", "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.91527129, 40.76345678 ] } },
 { "type": "Feature", "properties": { "name": "Roberta's Pizza", "category": "Pizza Place", "phone": "(718) 417-1118", "address": "261 Moore St", "city": "Brooklyn", "zipcode": 11206.0, "state": "NY", "latitude": 40.70501507, "longitude": -73.93361653, "url": "http://www.robertaspizza.com", "Unnamed: 10": null, "borough": "Brooklyn", "eaterNY": "1", "NYTimes": null, "timeOut": "1", "yotam": "1", "thrillist": "1", "scan": "1", "price": null, "temperatureC": null, "datetime": null, "3dModel": null, "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.93361653, 40.70501507 ] } },
-{ "type": "Feature", "properties": { "name": "Scarr's Pizza", "category": "Pizza Place", "phone": "(212) 334-3481", "address": "22 Orchard St", "city": "New York", "zipcode": 10002.0, "state": "NY", "latitude": 40.71533501, "longitude": -73.991649, "url": "http://www.scarrspizza.com", "Unnamed: 10": null, "borough": "Manhattan", "eaterNY": null, "NYTimes": "1", "timeOut": "1", "yotam": "1", "thrillist": "1", "scan": "1", "price": 3.8, "temperatureC": 56.5, "datetime": "6/11/2021", "3dModel": "https://drive.google.com/drive/folders/1GjNW3qy1dcNVrcQhvpNL-cMaOfAPL65-?usp=sharing", "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.991649, 40.71533501 ] } },
 { "type": "Feature", "properties": { "name": "Totonno's Pizzeria Napolitano", "category": "Pizza Place", "phone": "(718) 372-8606", "address": "1524 Neptune Ave", "city": "Brooklyn", "zipcode": 11224.0, "state": "NY", "latitude": 40.57903692, "longitude": -73.98397049, "url": "http://www.totonnosconeyisland.com", "Unnamed: 10": null, "borough": "Brooklyn", "eaterNY": "1", "NYTimes": null, "timeOut": "1", "yotam": "1", "thrillist": "1", "scan": null, "price": null, "temperatureC": null, "datetime": null, "3dModel": null, "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.98397049, 40.57903692 ] } },
 { "type": "Feature", "properties": { "name": "&pizza", "category": "Pizza Place", "phone": "(202) 558-7549", "address": "15 W 28th St", "city": "New York", "zipcode": 10001.0, "state": "NY", "latitude": 40.74520458, "longitude": -73.98823142000001, "url": "https://andpizza.com/locations/nomad/", "Unnamed: 10": null, "borough": "Manhattan", "eaterNY": null, "NYTimes": null, "timeOut": null, "yotam": null, "thrillist": null, "scan": null, "price": null, "temperatureC": null, "datetime": null, "3dModel": null, "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.98823142, 40.74520458 ] } },
 { "type": "Feature", "properties": { "name": "&pizza", "category": "Pizza Place", "phone": "(202) 558-7549", "address": "740 Broadway", "city": "New York", "zipcode": 10003.0, "state": "NY", "latitude": 40.72977005, "longitude": -73.99273619, "url": "https://andpizza.com", "Unnamed: 10": null, "borough": "Manhattan", "eaterNY": null, "NYTimes": null, "timeOut": null, "yotam": null, "thrillist": null, "scan": null, "price": null, "temperatureC": null, "datetime": null, "3dModel": null, "notes": null }, "geometry": { "type": "Point", "coordinates": [ -73.99273619, 40.72977005 ] } },

@@ -1,0 +1,23 @@
+.sans-serif,
+.mapboxgl-map {
+  font-family: "roboto", sans-serif;
+}
+
+.mapboxgl-popup-content {
+  padding: 1.5rem;
+}
+
+.heading.f2 {
+  font-size: 1.7rem;
+  max-width: 16rem;
+}
+
+@media screen and (min-width: 30em) {
+  .intro-wrapper.pt6 {
+    padding-top: 11rem;
+  }
+  .heading.f2 {
+    font-size: 2rem;
+    max-width: 20rem;
+  }
+}
