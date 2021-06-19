@@ -5,6 +5,7 @@ const mapContainer = document.querySelector('#map')
 const buttons = document.querySelectorAll('button.filter')
 const observer = new IntersectionObserver(enableZoom)
 observer.observe(mainContainer)
+
 const inListFilter = [
     'any', 
     ['==', ['get', 'eaterNY'], '1' ],
@@ -14,7 +15,8 @@ const inListFilter = [
     ['==', ['get', 'thrillist'], '1'],
     ['==', ['get', 'scan'], '1'],
 ]
-let audio
+let audio = null
+let currentMarker = null
 
 // Create and initialize map variable
 const map = new mapboxgl.Map({
@@ -25,63 +27,60 @@ const map = new mapboxgl.Map({
   scrollZoom: false,
 });
 
-// Load other layers
-map.on('load', function() {
-    var layers = map.getStyle().layers;
-    var firstSymbolId;
-    for (var i = 0; i < layers.length; i++) {
-      if (layers[i].type === "symbol") {
-        firstSymbolId = layers[i].id;
-        break;
-      }
-    }
+function loadImage(name, url) {
+  return new Promise( (resolve, reject) => {
+    map.loadImage(url, (error, image) => {
+      if(error) reject(error)
+      map.addImage(name, image)
+      resolve()
+    })
+  })
+}
 
+function setupLayer(symbol) {
+  Promise.all([
+    loadImage('marker-active', './assets/marker-active.png'),
+    loadImage('marker-inactive', './assets/marker-inactive.png')
+  ])
+  .then( results => {
+    const [activeImage, inactiveImg] = results
     map.addLayer(
       {
         id: "pizzaPlaces",
-        type: "circle",
+        type: "symbol",
         source: {
           type: "geojson",
           data: "data/pizzaPlaces.geojson",
+          tolerance: 0,
         },
         layout: {
-          visibility: "visible",
-        },
-        paint: {
-          "circle-color": 'black',
-          "circle-opacity": 1,
-          "circle-radius": [
+          'icon-image': 'marker-inactive',
+          'icon-size': [
             "interpolate",
             ["exponential", 2],
             ["zoom"],
             10,
-            4,
+            0.5,
             16,
-            30,
+            1.5,
           ],
         },
       },
-      firstSymbolId
+      symbol
     );
-    
-  map.setFilter('pizzaPlaces', inListFilter)
-  buttons.forEach( button => button.addEventListener('click', filter))
-});
+    map.setFilter('pizzaPlaces', inListFilter)
+    buttons.forEach(button => button.addEventListener('click', filter))
+  }) 
+}
 
-// Create popups
-map.on("click", "pizzaPlaces", function (e) {
-  e.originalEvent.preventDefault();
-  console.log("Clicked on a pizza place...", e.features[0]);
-  const props = e.features[0].properties
-  let popuphtml =
-  `
+function getPopupHTML(props) {
+  return `
     <div class=''>
       <h3 class='f4 mt0 mb0'>${props.name}</h3>
       <p class='f5 mt0 lh-copy'>${props.address}, ${props.borough}</p>
-      ${
-        (() => {
-          if(props.scan === '1') {
-            return `
+      ${(() => {
+      if (props.scan === '1') {
+        return `
             <div>
               <p class='f5 mt0 mb0 lh-copy'>
                 <span class='b'>price:</span> $${props.price}
@@ -111,43 +110,36 @@ map.on("click", "pizzaPlaces", function (e) {
             >
             </model-viewer>
             `
-          } else {
-            return ''
-          }
-        })()
+      } else {
+        return ''
       }
+    })()
+    }
     </div>
   `
-  const popup = new mapboxgl.Popup({ maxWidth: '350px'})
-    .setLngLat(e.lngLat)
-    .setHTML(popuphtml)
+}
+
+function showPopup(props) {
+  const popup = new mapboxgl.Popup({
+    maxWidth: '350px',
+    anchor: 'top',
+  })
+    .setLngLat({ lng: props.longitude, lat: props.latitude })
+    .setHTML(getPopupHTML(props))
     .addTo(map);
-  
+
   stopAudio()
 
-  if(props.scan === '1') {
+  if (props.scan === '1') {
     audio = new Audio(`${props['3dModel']}/audio.m4a`);
     audio.loop = true
     audio.play();
-  } 
-});
-
-map.on("mouseenter", "pizzaPlaces", function () {
-  map.getCanvas().style.cursor = "pointer";
-});
-
-map.on("mouseleave", "pizzaPlaces", function () {
-  map.getCanvas().style.cursor = "";
-});
-
-mapContainer.addEventListener('click', e => {
-  if (e.target.classList.contains('mapboxgl-popup-close-button')) {
-    stopAudio()
   }
-})
+
+  map.flyTo({ center: [props.longitude, props.latitude - 0.002] })
+}
 
 function enableZoom(entries) {
-  console.log(entries[0].isIntersecting)
   if( !entries[0].isIntersecting && !map.scrollZoom.isEnabled() ) {
     map.scrollZoom.enable({ around: 'center' })
   } else if (entries[0].isIntersecting && map.scrollZoom.isEnabled()){
@@ -172,3 +164,36 @@ function filter(e) {
     '1'
   ])
 }
+
+
+
+map.on('load', function () {
+  var layers = map.getStyle().layers;
+  var firstSymbolId;
+  for (var i = 0; i < layers.length; i++) {
+    if (layers[i].type === "symbol") {
+      firstSymbolId = layers[i].id;
+      break;
+    }
+  }
+  setupLayer(firstSymbolId)
+});
+
+map.on("click", "pizzaPlaces", function (e) {
+  e.originalEvent.preventDefault();
+  showPopup(e.features[0].properties)
+});
+
+map.on("mouseenter", "pizzaPlaces", function () {
+  map.getCanvas().style.cursor = "pointer";
+});
+
+map.on("mouseleave", "pizzaPlaces", function () {
+  map.getCanvas().style.cursor = "";
+});
+
+mapContainer.addEventListener('click', e => {
+  if (e.target.classList.contains('mapboxgl-popup-close-button')) {
+    stopAudio()
+  }
+})
