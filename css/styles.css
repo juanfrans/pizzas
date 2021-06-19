@@ -3,6 +3,27 @@
   font-family: "roboto", sans-serif;
 }
 
+section {
+  background-color: white;
+}
+
+.static-map {
+  background-image: url('../assets/map.png');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  margin-bottom: 100vh;
+}
+
+.map-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: -1;
+}
+
 .mapboxgl-popup-content {
   padding: 1.5rem;
 }

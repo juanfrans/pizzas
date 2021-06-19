@@ -2,9 +2,19 @@ mapboxgl.accessToken = "pk.eyJ1IjoienNjaG5laWRlciIsImEiOiJjaXg3eWUzeGowMXEyMnlxe
 
 const mapContainer = document.querySelector('#map')
 const buttons = document.querySelectorAll('button.filter')
+const inListFilter = [
+    'any', 
+    ['==', ['get', 'eaterNY'], '1' ],
+    ['==', ['get', 'NYTimes'], '1'],
+    ['==', ['get', 'timeOut'], '1'],
+    ['==', ['get', 'yotam'], '1'],
+    ['==', ['get', 'thrillist'], '1'],
+    ['==', ['get', 'scan'], '1'],
+]
+let audio
 
 // Create and initialize map variable
-var map = new mapboxgl.Map({
+const map = new mapboxgl.Map({
   container: mapContainer,
   style: "mapbox://styles/zschneider/ckpohayy112xe17qlj1asuw3i",
   center: [-73.99, 40.715],
@@ -34,13 +44,7 @@ map.on('load', function() {
           visibility: "visible",
         },
         paint: {
-          "circle-color": [
-            'match',
-            ['get', 'scan'],
-            '1',
-            'red',
-            'black'
-          ],
+          "circle-color": 'black',
           "circle-opacity": 1,
           "circle-radius": [
             "interpolate",
@@ -55,34 +59,15 @@ map.on('load', function() {
       },
       firstSymbolId
     );
-
-    buttons.forEach( button => button.addEventListener('click', filter))
+    
+  map.setFilter('pizzaPlaces', inListFilter)
+  buttons.forEach( button => button.addEventListener('click', filter))
 });
-
-let audio
-
-function stopAudio() {
-  if (audio) {
-    audio.pause()
-    audio = null
-  }
-}
-
-function filter(e) {
-  const name = e.target.dataset.filter
-  buttons.forEach(button => button.classList.remove('active'))
-  e.target.classList.add('active')
-  map.setFilter('pizzaPlaces', name === 'all' ? null : [
-    '==', 
-    ['get', name], 
-    '1'
-  ])
-}
 
 // Create popups
 map.on("click", "pizzaPlaces", function (e) {
   e.originalEvent.preventDefault();
-  console.log("Clicked on a pizza place...", e.features[0].properties);
+  console.log("Clicked on a pizza place...", e.features[0]);
   const props = e.features[0].properties
   let popuphtml =
   `
@@ -156,3 +141,22 @@ mapContainer.addEventListener('click', e => {
     stopAudio()
   }
 })
+
+
+function stopAudio() {
+  if (audio) {
+    audio.pause()
+    audio = null
+  }
+}
+
+function filter(e) {
+  const name = e.target.dataset.filter
+  buttons.forEach(button => button.classList.remove('active'))
+  e.target.classList.add('active')
+  map.setFilter('pizzaPlaces', name === 'all' ? inListFilter : [
+    '==',
+    ['get', name],
+    '1'
+  ])
+}
