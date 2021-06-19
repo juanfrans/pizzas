@@ -95,6 +95,7 @@ map.on("click", "pizzaPlaces", function (e) {
             </div>
             <model-viewer 
               src="${props['3dModel']}/model.gltf"
+              ios-src="${props['3dModel']}/model.usdz"
               alt="A pizza slice"
               ar
               ar-modes="webxr scene-viewer quick-look"
