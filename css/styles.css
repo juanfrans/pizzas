@@ -10,6 +10,7 @@ a{
 a:visited{
   color: red;
 }
+<<<<<<< HEAD
 .main  {
   background-color: #fae6a3;
   width: 100vw;
@@ -31,6 +32,8 @@ a:visited{
   top: 0;
   z-index: -1;
 }
+=======
+>>>>>>> b98fb8317453cc87d71e5867a71554c4ee38c310
 
 .mapboxgl-popup {
   z-index: 100000;
