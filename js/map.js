@@ -23,6 +23,12 @@ const map = new mapboxgl.Map({
   center: [-73.99, 40.715],
   zoom: 11.25,
   scrollZoom: false,
+  maxZoom: 17,
+  minZoom: 10,
+  maxBounds: [
+    [-74.5, 40.475],
+    [-73.5, 40.95],
+  ],
 });
 
 function loadImage(name, url) {
