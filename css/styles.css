@@ -3,28 +3,6 @@
   font-family: "roboto", sans-serif;
 }
 
-.main  {
-  background-color: white;
-  width: 100vw;
-}
-
-.static-map {
-  background-image: url('../assets/map.png');
-  background-size: cover;
-  background-position: center;
-  width: 100vw;
-  height: 100vh;
-  margin-bottom: 120vh;
-}
-
-.map-wrapper {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  z-index: -1;
-}
-
 .mapboxgl-popup {
   z-index: 100000;
   box-shadow: -8px 8px 12px -6px rgba(0,0,0,0.5);

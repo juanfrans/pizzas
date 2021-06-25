@@ -1,10 +1,7 @@
 mapboxgl.accessToken = "pk.eyJ1IjoienNjaG5laWRlciIsImEiOiJjaXg3eWUzeGowMXEyMnlxeWI1MzBudzN0In0.i-aef9w2ifwlPvXerrQOwA";
 
-const mainContainer = document.querySelector('.main')
 const mapContainer = document.querySelector('#map')
 const buttons = document.querySelectorAll('button.filter')
-const observer = new IntersectionObserver(enableZoom)
-observer.observe(mainContainer)
 
 const inListFilter = [
     'any', 
