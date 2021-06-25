@@ -48,10 +48,7 @@
         </p>
         <p class="f5 f5-ns lh-copy center">
           Pizza is a food loved by many, and lists rating the best slices in town are often compiled . We decided to
-          create our own aggregate list, combining 4 different articles published on <a href="https://www.thrillist.com/eat/new-york/the-best-pizza-in-new-york-city#map=show">Thrillist</a>,
-          <a href="https://ny.eater.com/maps/nyc-best-iconic-pizza-pizzeria">EaterNY</a>,<a href="https://www.timeout.com/newyork/restaurants/best-new-york-pizza">TimeOut</a>,
-          <a href="https://www.nytimes.com/2018/11/15/nyregion/best-pizza-slices-nyc.html">New York Times</a>, and a personal list made by a friend and independent Pizza lover <a href="https://www.instagram.com/stories/highlights/18005843788011752/">Yotam Hadar</a>.
-          We went out to try the best pizzas in the city. Using photogrammetry, we re-created the slices in 3D so that you can view these slices in augmented reality.
+          create our own ultimate list. We tried out the best pizza slices in the city, and using photogrammetry, we re-created the slices in 3D so that you can view these slices in augmented reality.
         </p>
         <div>
       <model-viewer src="./assets/scarrs/model.gltf"
@@ -62,7 +59,6 @@
             exposure = "1"
                   auto-rotate ar magic-leap
                   ar-modes="webxr scene-viewer quick-look">
-  <button slot="hotspot-hand" data-position="4501027.450842284m 95390.2995425926m -63506.82726579644m" data-normal="0.007076039930749184m -1.4275443774272317e-16m 0.9999749645160615m"> <div id="annotation">This hotspot disappears completely</div>
   </button></model-viewer><style>
 
   button[slot="hotspot-hand"]{
@@ -114,39 +110,28 @@ button[slot="hotspot-foot"]:not([data-visible]) {
 
 <section class='static-map'>
       <div class='mw6 center relative'>
-        <div class='ph4 pv4 center'>
+        <div class='ph4 pv4 center'style="background-color:white;">
           <p class="f5 f5-ns lh-copy center">
-            There are x businesses within the five boroughs that offer pizza in the city, according to the foursquare API.
-            Out
-            of
-            these thousands, there are several famous spots who come up in all the lists rating the best pizzas in the city.
-            60
-            restaurants appear in the lists we looked at for the best pizzas, and from that group only 23 restaurants appear
-            in
-            more
-            than one list.
+            There are x businesses within the five boroughs that offer pizza in the city, according to the foursquare API. Out of these thousands, there are several famous spots who come up in all the lists rating the best pizzas in the city. 60 restaurants appear in the lists we looked at for the best pizzas, and from that group only 23 restaurants appear in more than one list.
           </p>
           <p class="f5 f5-ns lh-copy center">
-            For this article, we looked at lists by The New York Times, TimeOut, Eater, Thrillist, and an independant list
-            created
-            by our friend and pizza enthusiast Yotam Hadar.
+            For this article, we looked at lists by published on <a href="https://www.thrillist.com/eat/new-york/the-best-pizza-in-new-york-city#map=show">Thrillist</a>,
+            <a href="https://ny.eater.com/maps/nyc-best-iconic-pizza-pizzeria">EaterNY</a>,<a href="https://www.timeout.com/newyork/restaurants/best-new-york-pizza">TimeOut</a>,
+            <a href="https://www.nytimes.com/2018/11/15/nyregion/best-pizza-slices-nyc.html">New York Times</a>, and a personal list made by a friend and independent Pizza enthusiast <a href="https://www.instagram.com/stories/highlights/18005843788011752/">Yotam Hadar</a>.
           </p>
-
         </div>
       </div>
     </section>
-  </div>
-  <section name="mapSection" class="map-wrapper relative flex flex-column">
+  <!-- </div> -->
+  <!-- <section name="mapSection" class="map-wrapper relative flex flex-column">
   <link rel="stylesheet" href="https://use.typekit.net/eeo5fuf.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
   </style>
 </head>
-
 <body class='sans-serif'>
-
     </div>
-  </section>
+  </section> -->
   <section name="mapSection" class="relative flex flex-column">
     <div name="map" id="map" class="absolute top-0 bottom-0 w-100 vh-100" data-tap-disabled="true">
     </div>
@@ -170,5 +155,4 @@ button[slot="hotspot-foot"]:not([data-visible]) {
   </section>
   <script src="js/map.js"></script>
 </body>
-
 </html>

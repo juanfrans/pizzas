@@ -45,6 +45,7 @@ a:visited{
 }
 
 .heading.f2 {
+  font-family: din-condensed,sans-serif;
   font-size: 1.7rem;
   max-width: 16rem;
 }
