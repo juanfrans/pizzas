@@ -16,6 +16,8 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
 </style>
+<!-- Import the component -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 
 <body class='sans-serif'>
@@ -23,19 +25,33 @@
     <section name="intro" class="mw6 center relative">
       <img src='assets/pizza1.png' class="absolute top-0 w-75 right-0" />
       <div class='intro-wrapper ph4 pb4 pt6 center'>
+
         <h1 class="heading f2 lh-title tl i">THE QUEST FOR THE ULTIMATE PIZZA SLICE IN NYC</h1>
         <p class="f5 f5-ns lh-copy center">
-          There is no denying that New York City has had a long standing connection to the Pizza slice as one of its
+      <img src='assets/pizza3.png' />
+      <br>
+      <br>
+      <br>
+      There is no denying that New York City has had a long standing connection to the Pizza slice as one of its
           hallmark
           culinary offerings and culture symbols.
         </p>
         <p class="f5 f5-ns lh-copy center">
-          The pizza slice even has an economic tie to the city, suggested by the   <a href="https://en.wikipedia.org/wiki/Pizza_Principle">Pizza Principle</a> - a correlation between
+          The pizza slice even has an economic tie to the city, suggested by the <a href="https://en.wikipedia.org/wiki/Pizza_Principle">Pizza Principle</a> - a correlation between
           the price of a slice and that of a subway ride.
         </p>
-        <br>
-            <img src='assets/pizza3.png' />
-      <br>
+        <p class="f5 f5-ns lh-copy center">
+          What is it that makes “the best’ slices? Researcher Jared Lander set out to find the reason for highly rated pizzas,
+          looking at
+          location, price and the type of fuel used for the oven.
+          <a href="https://www.jaredlander.com/content/2010/03/Pizza-Thesis-Jared-Lander.pdf">Lander's research</a> found that Midtown pizzas are slightly
+          less favorable and that coal fired ovens draw larger crowds, but also concluded that they were able to discover much
+          differentiation in quality. They suggested that “as is the case with wine, people in general do not have a
+          sophisticated
+          enough palate to fully appreciate the many facets of pizza.”
+        </p>
+
+
         <p class="f5 f5-ns lh-copy center">
           Pizza is a food loved by many, and lists rating the best slices in town are often compiled . We decided to
           create our
@@ -44,21 +60,88 @@
           <a href="https://www.timeout.com/newyork/restaurants/best-new-york-pizza">TimeOut</a>,
           <a href="https://www.nytimes.com/2018/11/15/nyregion/best-pizza-slices-nyc.html">New York Times</a>,
           and a personal list made by a friend and independent Pizza lover <a href="https://www.instagram.com/stories/highlights/18005843788011752/">Yotam Hadar</a>.
-          We went out to capture the best pizzas in the city
-          using photogrammetry, so that you can enjoy these slices wherever you are, with augmented reality.
+          We went out to try the best pizzas in the city. Using photogrammetry, we re-created the slices in 3D so that you can view these slices in augmented reality.
         </p>
-  <img src='assets/pizza2.png' />
-        <p class="f5 f5-ns lh-copy center">
-          What is it that makes “the best’ slices? Researcher Jared Lander set out to find the reason for highly rated pizzas,
-          looking at
-          location, price and the type of fuel used for the oven.   <a href="https://www.jaredlander.com/content/2010/03/Pizza-Thesis-Jared-Lander.pdf">Lander's research</a> found that Midtown pizzas are slightly
-          less
-          favorable and that coal fired ovens draw larger crowds, but also concluded that they were able to discover much
-          differentiation in quality. They suggested that “as is the case with wine, people in general do not have a
-          sophisticated
-          enough palate to fully appreciate the many facets of pizza.”
-        </p>
-      </div>
+        <!-- Use it like any other HTML element -->
+        <div>
+
+      <model-viewer src="./assets/scarrs/model.gltf"
+        ios-src="./assets/scarrs/model.usdz"
+                  alt="yummy cake"
+                  camera-controls
+                  interaction-prompt="auto"
+            exposure = "1"
+                  auto-rotate ar magic-leap
+                  ar-modes="webxr scene-viewer quick-look"
+                  >
+  <button slot="hotspot-hand" data-position="4501027.450842284m 95390.2995425926m -63506.82726579644m" data-normal="0.007076039930749184m -1.4275443774272317e-16m 0.9999749645160615m"> <div id="annotation">This hotspot disappears completely</div>
+  </button>
+    </model-viewer>
+    <style>
+  /* button{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
+    box-sizing: border-box;
+    font-family: Helvetica Neue, sans-serif;
+    font-size: 10%;
+
+
+
+      } */
+
+  button[slot="hotspot-hand"]{
+    --min-hotspot-opacity: 0;
+    background-color: red;
+  }
+
+  button[slot="hotspot-foot"]:not([data-visible]) {
+    background-color: transparent;
+    border: 0px solid blue;
+  }
+
+  #annotation{
+    background-color: #888888;
+    position: absolute;
+    transform: translate(10px, 10px);
+    border-radius: 1px;
+    padding: 1px;
+  }
+  /* This keeps child nodes hidden while the element loads */
+  :not(:defined) > * {
+    display: none;
+  }
+</style>
+    <script>
+(() => {
+  const modelViewer = document.querySelector('#shadow-intensity-demo');
+  const time = performance.now();
+
+  const animate = (now) => {
+    modelViewer.shadowIntensity = oscillate(0, 2, 4000, now - time);
+    requestAnimationFrame(animate);
+  };
+
+  animate();
+})();
+</script>
+  </div>
+  <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+  </script>
+
+  <!-- Loads <model-viewer> for old browsers like IE11: -->
+  <script nomodule
+
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+  </script>
+
+  <br>
+
+  </div>
 
     </section>
     <section class='static-map'>
@@ -80,6 +163,7 @@
             created
             by our friend and pizza enthusiast Yotam Hadar.
           </p>
+
         </div>
       </div>
     </section>
