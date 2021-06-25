@@ -1,19 +1,20 @@
-mapboxgl.accessToken = "pk.eyJ1IjoienNjaG5laWRlciIsImEiOiJjaXg3eWUzeGowMXEyMnlxeWI1MzBudzN0In0.i-aef9w2ifwlPvXerrQOwA";
+mapboxgl.accessToken =
+  "pk.eyJ1IjoienNjaG5laWRlciIsImEiOiJjaXg3eWUzeGowMXEyMnlxeWI1MzBudzN0In0.i-aef9w2ifwlPvXerrQOwA";
 
-const mapContainer = document.querySelector('#map')
-const buttons = document.querySelectorAll('button.filter')
+const mapContainer = document.querySelector("#map");
+const buttons = document.querySelectorAll("button.filter");
 
 const inListFilter = [
-    'any', 
-    ['==', ['get', 'eaterNY'], '1' ],
-    ['==', ['get', 'NYTimes'], '1'],
-    ['==', ['get', 'timeOut'], '1'],
-    ['==', ['get', 'yotam'], '1'],
-    ['==', ['get', 'thrillist'], '1'],
-    ['==', ['get', 'scan'], '1'],
-]
-let audio = null
-let currentMarker = null
+  "any",
+  ["==", ["get", "eaterNY"], "1"],
+  ["==", ["get", "NYTimes"], "1"],
+  ["==", ["get", "timeOut"], "1"],
+  ["==", ["get", "yotam"], "1"],
+  ["==", ["get", "thrillist"], "1"],
+  ["==", ["get", "scan"], "1"],
+];
+let audio = null;
+let currentMarker = null;
 
 // Create and initialize map variable
 const map = new mapboxgl.Map({
@@ -25,22 +26,21 @@ const map = new mapboxgl.Map({
 });
 
 function loadImage(name, url) {
-  return new Promise( (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     map.loadImage(url, (error, image) => {
-      if(error) reject(error)
-      map.addImage(name, image)
-      resolve()
-    })
-  })
+      if (error) reject(error);
+      map.addImage(name, image);
+      resolve();
+    });
+  });
 }
 
 function setupLayer(symbol) {
   Promise.all([
-    loadImage('marker-active', './assets/marker-active.png'),
-    loadImage('marker-inactive', './assets/marker-inactive.png')
-  ])
-  .then( results => {
-    const [activeImage, inactiveImg] = results
+    loadImage("marker-active", "./assets/marker-active.png"),
+    loadImage("marker-inactive", "./assets/marker-inactive.png"),
+  ]).then((results) => {
+    const [activeImage, inactiveImg] = results;
     map.addLayer(
       {
         id: "pizzaPlaces",
@@ -51,8 +51,8 @@ function setupLayer(symbol) {
           tolerance: 0,
         },
         layout: {
-          'icon-image': 'marker-inactive',
-          'icon-size': [
+          "icon-image": "marker-inactive",
+          "icon-size": [
             "interpolate",
             ["exponential", 2],
             ["zoom"],
@@ -63,11 +63,11 @@ function setupLayer(symbol) {
           ],
         },
       },
-      symbol
+      "settlement-minor-label"
     );
-    map.setFilter('pizzaPlaces', inListFilter)
-    buttons.forEach(button => button.addEventListener('click', filter))
-  }) 
+    map.setFilter("pizzaPlaces", inListFilter);
+    buttons.forEach((button) => button.addEventListener("click", filter));
+  });
 }
 
 function getPopupHTML(props) {
@@ -76,8 +76,8 @@ function getPopupHTML(props) {
       <h3 class='f4 mt0 mb0'>${props.name}</h3>
       <p class='f5 mt0 lh-copy'>${props.address}, ${props.borough}</p>
       ${(() => {
-      if (props.scan === '1') {
-        return `
+        if (props.scan === "1") {
+          return `
             <div>
               <p class='f5 mt0 mb0 lh-copy'>
                 <span class='b'>price:</span> $${props.price}
@@ -93,8 +93,8 @@ function getPopupHTML(props) {
               </p>
             </div>
             <model-viewer 
-              src="${props['3dModel']}/model.gltf"
-              ios-src="${props['3dModel']}/model.usdz"
+              src="${props["3dModel"]}/model.gltf"
+              ios-src="${props["3dModel"]}/model.usdz"
               alt="A pizza slice"
               ar
               ar-modes="webxr scene-viewer quick-look"
@@ -106,65 +106,61 @@ function getPopupHTML(props) {
               auto-rotate
             >
             </model-viewer>
-            `
-      } else {
-        return ''
-      }
-    })()
-    }
+            `;
+        } else {
+          return "";
+        }
+      })()}
     </div>
-  `
+  `;
 }
 
 function showPopup(props) {
   const popup = new mapboxgl.Popup({
-    maxWidth: '350px',
-    anchor: 'top',
+    maxWidth: "350px",
+    anchor: "top",
   })
     .setLngLat({ lng: props.longitude, lat: props.latitude })
     .setHTML(getPopupHTML(props))
     .addTo(map);
 
-  stopAudio()
+  stopAudio();
 
-  if (props.scan === '1') {
-    audio = new Audio(`${props['3dModel']}/audio.m4a`);
-    audio.loop = true
+  if (props.scan === "1") {
+    audio = new Audio(`${props["3dModel"]}/audio.m4a`);
+    audio.loop = true;
     audio.play();
   }
 
-  map.flyTo({ center: [props.longitude, props.latitude - 0.002] })
+  map.flyTo({ center: [props.longitude, props.latitude - 0.002] });
 }
 
 function enableZoom(entries) {
-  if( !entries[0].isIntersecting && !map.scrollZoom.isEnabled() ) {
-    map.scrollZoom.enable({ around: 'center' })
-  } else if (entries[0].isIntersecting && map.scrollZoom.isEnabled()){
-    map.scrollZoom.disable()
+  if (!entries[0].isIntersecting && !map.scrollZoom.isEnabled()) {
+    map.scrollZoom.enable({ around: "center" });
+  } else if (entries[0].isIntersecting && map.scrollZoom.isEnabled()) {
+    map.scrollZoom.disable();
   }
 }
 
 function stopAudio() {
   if (audio) {
-    audio.pause()
-    audio = null
+    audio.pause();
+    audio = null;
   }
 }
 
 function filter(e) {
-  const name = e.target.dataset.filter
-  buttons.forEach(button => button.classList.remove('active'))
-  e.target.classList.add('active')
-  map.setFilter('pizzaPlaces', name === 'all' ? inListFilter : [
-    '==',
-    ['get', name],
-    '1'
-  ])
+  const name = e.target.dataset.filter;
+  buttons.forEach((button) => button.classList.remove("active"));
+  e.target.classList.add("active");
+  map.setFilter(
+    "pizzaPlaces",
+    name === "all" ? inListFilter : ["==", ["get", name], "1"]
+  );
 }
 
-
-
-map.on('load', function () {
+map.on("load", function () {
   var layers = map.getStyle().layers;
   var firstSymbolId;
   for (var i = 0; i < layers.length; i++) {
@@ -173,12 +169,12 @@ map.on('load', function () {
       break;
     }
   }
-  setupLayer(firstSymbolId)
+  setupLayer(firstSymbolId);
 });
 
 map.on("click", "pizzaPlaces", function (e) {
   e.originalEvent.preventDefault();
-  showPopup(e.features[0].properties)
+  showPopup(e.features[0].properties);
 });
 
 map.on("mouseenter", "pizzaPlaces", function () {
@@ -189,8 +185,14 @@ map.on("mouseleave", "pizzaPlaces", function () {
   map.getCanvas().style.cursor = "";
 });
 
-mapContainer.addEventListener('click', e => {
-  if (e.target.classList.contains('mapboxgl-popup-close-button')) {
-    stopAudio()
+mapContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("mapboxgl-popup-close-button")) {
+    stopAudio();
   }
-})
+});
+
+// Adding the zoom in/out buttons
+var nav = new mapboxgl.NavigationControl({
+  showCompass: false,
+});
+map.addControl(nav, "bottom-left");
