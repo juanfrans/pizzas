@@ -7,6 +7,9 @@
 a{
   color: red;
 }
+a:visited{
+  color: red;
+}
 .main  {
   background-color: white;
   width: 100vw;
