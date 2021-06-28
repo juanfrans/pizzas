@@ -98,7 +98,7 @@ function getPopupHTML(props) {
                 <span class='b'>notes:</span> ${props.notes}
               </p>
             </div>
-            <model-viewer 
+            <model-viewer
               src="${props["3dModel"]}/model.gltf"
               ios-src="${props["3dModel"]}/model.usdz"
               alt="A pizza slice"
