@@ -50,6 +50,17 @@ a:visited{
   max-width: 16rem;
 }
 
+element.style {
+}
+.b {
+    font-weight: 700;
+}
+.f5 {
+    font-size: 1rem;
+}
+.mt0{
+  font-size: .85rem;
+}
 button.filter.active {
   background-color: #ffeb3b;
   font-weight: bold;

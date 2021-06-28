@@ -269,9 +269,9 @@
     "scan": "1",
     "price": 2.0,
     "temperatureC": 82.8,
-    "datetime": null,
+    "datetime": "Monday 5.24, 5pm",
     "3dModel": "./assets/rizzos/",
-    "notes": "The radio is playing 80’s pop No line, very few people. No celebrity photos or framed articles on the wall.  $5 for two slices and a drink. I tried both the classic slice and the square one. The cheese on the square felt very plasticky and I did not enjoy it as much. The classic slice has a very thin and crispy crust. I liked it a lot."
+    "notes": "The radio is playing 80’s pop. No line, very few people. No celebrity photos or framed articles on the wall. $5 for two slices and a drink. Tried both the classic slice and the square one. The cheese on the square felt very plasticky. The classic slice has a very thin and crispy crust."
   },
   "geometry": {
     "type": "Point",
