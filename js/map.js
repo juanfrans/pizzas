@@ -47,13 +47,14 @@ function setupLayer(symbol) {
     loadImage("marker-inactive", "./assets/marker-inactive.png"),
   ]).then((results) => {
     const [activeImage, inactiveImg] = results;
+    
     map.addLayer(
       {
         id: "pizzaPlaces",
         type: "symbol",
         source: {
           type: "geojson",
-          data: "data/pizzaPlaces.geojson",
+          data: "data/inLists.geojson",
           tolerance: 0,
         },
         layout: {
@@ -63,13 +64,37 @@ function setupLayer(symbol) {
             ["exponential", 2],
             ["zoom"],
             10,
-            0.5,
+            ["match", ["get", "scan"], "1", 0.9, 0.5],
             16,
-            1.5,
+            ["match", ["get", "scan"], "1", 1.6, 1.1],
           ],
         },
       },
       "settlement-minor-label"
+    );
+    map.addLayer(
+      {
+        id: "otherPlaces",
+        type: "symbol",
+        source: {
+          type: "geojson",
+          data: "data/allOtherPlaces.geojson",
+          tolerance: 0,
+        },
+        layout: {
+          "icon-image": "marker-inactive",
+          "icon-size": [
+            "interpolate",
+            ["exponential", 2],
+            ["zoom"],
+            10,
+            0.2,
+            16,
+            0.8,
+          ],
+        },
+      },
+      "pizzaPlaces"
     );
     map.setFilter("pizzaPlaces", inListFilter);
     buttons.forEach((button) => button.addEventListener("click", filter));
